@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use EasyWeChat\Foundation\Application;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Log;
 
 class WechatController extends Controller
 {
@@ -21,7 +20,6 @@ class WechatController extends Controller
     public function serve()
     {
         Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
-
         $wechat = app('wechat');
         $userApi = $wechat->user;
         $wechat->server->setMessageHandler(function($message) use ($userApi){
@@ -30,7 +28,7 @@ class WechatController extends Controller
                     return '收到事件消息';
                     break;
                 case 'text':
-                    return '你好'.$userApi->get(FromUserName)->nickname;
+                    return '你好'.$message->FromUserName;
                     break;
                 case 'image':
                     return '收到图片消息';
@@ -57,12 +55,5 @@ class WechatController extends Controller
         Log::info('return response.');
 
         return $wechat->server->serve();
-    }
-
-
-    public function reply($options){
-        $app = new Application($options);
-        $reply = $app->reply;
-        $reply->current();
     }
 }
