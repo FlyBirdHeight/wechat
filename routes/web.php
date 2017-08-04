@@ -23,3 +23,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/wechat/token','WechatController@returnToken');
 
 Route::any('/wechat', 'WechatController@serve');
+Route::get('/wechat/menu','WechatController@menu');

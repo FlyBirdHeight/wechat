@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use EasyWeChat\Foundation\Application;
 use EasyWeChat\Support\Log;
 use Illuminate\Http\Request;
 
@@ -23,11 +24,18 @@ class WechatController extends Controller
 
         $wechat = app('wechat');
         $wechat->server->setMessageHandler(function($message){
-            return "欢迎关注 overtrue！";
+            return "欢迎关注 adsionli的测试账号！";
         });
 
         Log::info('return response.');
 
         return $wechat->server->serve();
+    }
+
+
+    public function reply($options){
+        $app = new Application($options);
+        $reply = $app->reply;
+        $reply->current();
     }
 }
