@@ -8,8 +8,7 @@ use Log;
 class WechatController extends Controller
 {
     public function returnToken(){
-        $token = 'adsionlilovefxq';
-        return $token;
+        phpinfo();
     }
 
     /**
