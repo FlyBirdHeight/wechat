@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use EasyWeChat\Support\Log;
 use Illuminate\Http\Request;
 
 class WechatController extends Controller
