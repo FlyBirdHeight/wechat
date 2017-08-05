@@ -9,9 +9,9 @@ class WeiXinController extends Controller
     public function api(){
         $echoStr = $_GET["echostr"];
         if($this->checkSignature()){
-            echo $echoStr;
-            exit;
+            return $echoStr;
         }
+        return $echoStr;
     }
 
     private function checkSignature(){
