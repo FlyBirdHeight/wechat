@@ -10,9 +10,9 @@ class WeiXinController extends Controller
     public function api(){
         $echoStr = Input::get('echostr');
         if($this->checkSignature()){
-            return $echoStr;
+            echo $echoStr;
+            exit;
         }
-        return null;
     }
 
     private function checkSignature(){
