@@ -25,6 +25,6 @@ Route::get('/wechat/token','WechatController@returnToken');
 Route::any('/wechat', 'WechatController@serve');
 Route::get('/wechat/menu','WechatController@menu');
 
-Route::any('/weixin/api', 'WeixinController@api');
+Route::any('/weixin/api', 'WeiXinController@api');
 
 
